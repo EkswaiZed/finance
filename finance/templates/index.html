@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+   <div class="section">
+        <h2>Welcome, {{ username }}!</h2>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock symbol</th>
+                    <th>Company name</th>
+                    <th>Total shares owned</th>
+                    <th>Current price for each stock</th>
+                    <th>Total shares value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in portfolio %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.company_name }}</td>
+                        <td>{{ stock.total_shares_owned }}</td>
+                        <td>${{ "%.2f"|format(stock.current_share_price) }}</td>
+                        <td>${{ "%.2f"|format(stock.total_shares_value) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4"><strong>$Cash owned</strong></td>
+                    <td><strong>${{ "%.2f"|format(cash_owned) }}</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><strong>Total Balance</strong></td>
+                    <td><strong>{{ grand_total }}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}
