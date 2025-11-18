@@ -17,8 +17,6 @@ app.jinja_env.filters["usd"] = usd
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-# Configure secret key for sessions
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key-for-local-testing")
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///finance.db")
